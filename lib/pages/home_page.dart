@@ -11,6 +11,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool isSelectMale = true;
   bool isSelectFemale = false;
+  double height = 60;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -115,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                                   ? Colors.white
                                   : ProjectColors.unSelectColor,
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -133,7 +134,52 @@ class _HomePageState extends State<HomePage> {
                   color: ProjectColors.colorOfContainer,
                 ),
                 child: Column(
-                  children: [],
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    const Text(
+                      "Height",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          height.toString(),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          " CM",
+                          style: TextStyle(
+                            color: ProjectColors.unSelectColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Slider.adaptive(
+                      min: 60.0,
+                      max: 220.0,
+                      activeColor: Colors.white,
+                      thumbColor: ProjectColors.red,
+                      value: height,
+                      onChanged: (value) {
+                        setState(
+                          () {
+                            height = double.parse(value.toStringAsFixed(2));
+                          },
+                        );
+                      },
+                    )
+                  ],
                 ),
               )
             ],
