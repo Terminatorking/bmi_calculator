@@ -13,10 +13,10 @@ class _HomePageState extends State<HomePage> {
   bool isSelectFemale = false;
   int age = 19;
   int weight = 70;
-  double result = 0.0;
   double height = 60.0;
   @override
   Widget build(BuildContext context) {
+    double result = 0.0;
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
@@ -208,13 +208,26 @@ class _HomePageState extends State<HomePage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(
-                          weight.toString(),
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              weight.toString(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              " KG",
+                              style: TextStyle(
+                                color: ProjectColors.unSelectColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -232,7 +245,15 @@ class _HomePageState extends State<HomePage> {
                                     const Color.fromARGB(255, 17, 20, 40),
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(
+                                    () {
+                                      if (weight > 1) {
+                                        weight -= 1;
+                                      }
+                                    },
+                                  );
+                                },
                                 child: const Text(
                                   "-",
                                   style: TextStyle(
@@ -255,7 +276,13 @@ class _HomePageState extends State<HomePage> {
                                     const Color.fromARGB(255, 17, 20, 40),
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(
+                                    () {
+                                      weight += 1;
+                                    },
+                                  );
+                                },
                                 child: const Text(
                                   "+",
                                   style: TextStyle(
@@ -314,7 +341,15 @@ class _HomePageState extends State<HomePage> {
                                     const Color.fromARGB(255, 17, 20, 40),
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(
+                                    () {
+                                      if (age > 1) {
+                                        age--;
+                                      }
+                                    },
+                                  );
+                                },
                                 child: const Text(
                                   "-",
                                   style: TextStyle(
@@ -337,7 +372,13 @@ class _HomePageState extends State<HomePage> {
                                     const Color.fromARGB(255, 17, 20, 40),
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(
+                                    () {
+                                      age++;
+                                    },
+                                  );
+                                },
                                 child: const Text(
                                   "+",
                                   style: TextStyle(
@@ -363,7 +404,9 @@ class _HomePageState extends State<HomePage> {
                     elevation: 0,
                     backgroundColor: ProjectColors.red,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    result = weight / ((height * height) / 10000);
+                  },
                   child: const Text("Calculate Your BMI"),
                 ),
               )
