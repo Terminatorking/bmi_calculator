@@ -411,7 +411,10 @@ class _HomePageState extends State<HomePage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return ResultPage(result: result);
+                          return ResultPage(
+                            result: result,
+                            size: size,
+                          );
                         },
                       ),
                     );
