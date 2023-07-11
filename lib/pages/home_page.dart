@@ -1,4 +1,5 @@
 import 'package:bmicalculator/constanst.dart';
+import 'package:bmicalculator/pages/result_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -406,6 +407,14 @@ class _HomePageState extends State<HomePage> {
                   ),
                   onPressed: () {
                     result = weight / ((height * height) / 10000);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return ResultPage(result: result);
+                        },
+                      ),
+                    );
                   },
                   child: const Text("Calculate Your BMI"),
                 ),
