@@ -11,7 +11,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool isSelectMale = true;
   bool isSelectFemale = false;
-  double height = 60;
+  int age = 19;
+  int weight = 70;
+  double result = 0.0;
+  double height = 60.0;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -174,12 +177,194 @@ class _HomePageState extends State<HomePage> {
                       onChanged: (value) {
                         setState(
                           () {
-                            height = double.parse(value.toStringAsFixed(2));
+                            height = double.parse(value.toStringAsFixed(1));
                           },
                         );
                       },
-                    )
+                    ),
                   ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width: size.width / 2.5,
+                    height: size.height / 5,
+                    decoration: BoxDecoration(
+                      color: ProjectColors.colorOfContainer,
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(15),
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        const Text(
+                          "weight",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  elevation: MaterialStateProperty.all(0),
+                                  shape: MaterialStateProperty.all(
+                                    const CircleBorder(),
+                                  ),
+                                  backgroundColor: MaterialStateProperty.all(
+                                    const Color.fromARGB(255, 17, 20, 40),
+                                  ),
+                                ),
+                                onPressed: () {},
+                                child: const Text(
+                                  "-",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  elevation: MaterialStateProperty.all(0),
+                                  shape: MaterialStateProperty.all(
+                                    const CircleBorder(),
+                                  ),
+                                  backgroundColor: MaterialStateProperty.all(
+                                    const Color.fromARGB(255, 17, 20, 40),
+                                  ),
+                                ),
+                                onPressed: () {},
+                                child: const Text(
+                                  "+",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: size.width / 2.5,
+                    height: size.height / 5,
+                    decoration: BoxDecoration(
+                      color: ProjectColors.colorOfContainer,
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(15),
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        const Text(
+                          "Age",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          age.toString(),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  elevation: MaterialStateProperty.all(0),
+                                  shape: MaterialStateProperty.all(
+                                    const CircleBorder(),
+                                  ),
+                                  backgroundColor: MaterialStateProperty.all(
+                                    const Color.fromARGB(255, 17, 20, 40),
+                                  ),
+                                ),
+                                onPressed: () {},
+                                child: const Text(
+                                  "-",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  elevation: MaterialStateProperty.all(0),
+                                  shape: MaterialStateProperty.all(
+                                    const CircleBorder(),
+                                  ),
+                                  backgroundColor: MaterialStateProperty.all(
+                                    const Color.fromARGB(255, 17, 20, 40),
+                                  ),
+                                ),
+                                onPressed: () {},
+                                child: const Text(
+                                  "+",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                margin: const EdgeInsets.all(30),
+                width: size.width,
+                height: 70,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    backgroundColor: ProjectColors.red,
+                  ),
+                  onPressed: () {},
+                  child: const Text("Calculate Your BMI"),
                 ),
               )
             ],
