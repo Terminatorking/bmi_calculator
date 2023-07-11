@@ -1,4 +1,5 @@
 import 'package:bmicalculator/constanst.dart';
+import 'package:bmicalculator/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class ResultPage extends StatelessWidget {
@@ -96,38 +97,60 @@ class ResultPage extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    Text(
-                      result < 18.5
-                          ? "you must eat high calorie foods and gain some weight"
-                          : (result >= 18.5 && result < 25)
-                              ? "You have a good body and you don't need to do anything"
-                              : (result >= 25 && result < 40)
-                                  ? "You should eat low calorie foods and do working out"
-                                  : result >= 40
-                                      ? "You must lose weight. you are in danger"
-                                      : "",
-                      style: TextStyle(
-                        color: result < 18.5
-                            ? Colors.yellow
+                    Padding(
+                      padding: const EdgeInsets.only(left: 12),
+                      child: Text(
+                        result < 18.5
+                            ? "you must eat high calorie foods and gain some weight"
                             : (result >= 18.5 && result < 25)
-                                ? Colors.green
+                                ? "You have a good body and you don't need to do anything"
                                 : (result >= 25 && result < 40)
-                                    ? Colors.orange
+                                    ? "You should eat low calorie foods and do working out"
                                     : result >= 40
-                                        ? Colors.redAccent
-                                        : Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                                        ? "You must lose weight. you are in danger"
+                                        : "",
+                        style: TextStyle(
+                          color: result < 18.5
+                              ? Colors.yellow
+                              : (result >= 18.5 && result < 25)
+                                  ? Colors.green
+                                  : (result >= 25 && result < 40)
+                                      ? Colors.orange
+                                      : result >= 40
+                                          ? Colors.redAccent
+                                          : Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
-              // Container(
-              //   width: size.width,
-              //   height: 70,
-              //   child: ElevatedButton(child: const),
-              // )
+              Container(
+                margin: const EdgeInsets.all(30),
+                width: size.width,
+                height: 70,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    backgroundColor: ProjectColors.red,
+                  ),
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const HomePage();
+                        },
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    "Re-Calculate BMI",
+                  ),
+                ),
+              ),
             ],
           ),
         ),

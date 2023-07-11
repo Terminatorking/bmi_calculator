@@ -407,7 +407,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   onPressed: () {
                     result = weight / ((height * height) / 10000);
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) {
